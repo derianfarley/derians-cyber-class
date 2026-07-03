@@ -91,6 +91,7 @@ The Security+ exam covers the core security skills needed for entry-level cybers
 - **Fully offline capable** — works without an internet connection once loaded
 - **Zero dependencies** — no npm, no build step, no server required
 - **Mobile-friendly** — responsive design works on phones and tablets
+- **Interactive lessons system** — structured learning modules with progress tracking, guided instruction, and exam-focused content
 
 ---
 
@@ -135,6 +136,28 @@ derians-cyber-class/
 ```
 
 The entire platform lives inside `index.html`. There are no external files, no assets folder, no JavaScript modules, and no stylesheets to manage. This is intentional — it means the file can be sent to anyone, opened anywhere, and works immediately without any setup.
+
+---
+
+
+
+## 🎓 Interactive Lessons System
+
+A major addition to the platform is the **Lessons Feature**, which transforms the application from a practice-question bank into a structured learning environment.
+
+### What the Lessons System Includes
+- **Domain-aligned lessons** organized by certification objective
+- **Interactive lesson dashboard** with progress tracking
+- **Section-by-section learning paths** designed to teach concepts before testing knowledge
+- **Lesson completion tracking** and visual progress indicators
+- **Exam-focused study notes** highlighting important CompTIA concepts
+- **Knowledge checks and question previews** embedded within lessons
+- **Structured navigation** between lessons and related topics
+- **Integrated transition from learning to quizzing** for reinforcement
+
+### Why It Matters
+Instead of immediately jumping into practice questions, learners can now build foundational understanding through guided lessons and then validate their knowledge using the existing quiz engine. This creates a more complete study experience that supports both learning and assessment.
+
 
 ---
 

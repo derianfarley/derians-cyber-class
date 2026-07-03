@@ -436,6 +436,93 @@ body::before{
 .attack-link{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:rgba(77,184,255,0.08);border:1px solid rgba(77,184,255,0.3);border-radius:6px;color:#4db8ff;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;text-decoration:none;transition:all .2s}
 .attack-link:hover{background:rgba(77,184,255,0.15);border-color:#4db8ff}
 .expl-enrichment-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;width:100%;margin-bottom:2px}
+/* ═══════════════════════════════════════════════════════════
+   LESSONS FEATURE
+═══════════════════════════════════════════════════════════ */
+
+/* ── LESSONS DASHBOARD ── */
+#screen-lessons{padding:0}
+.lessons-outer{max-width:1100px;margin:0 auto;width:100%;padding:0 32px}
+.lessons-stat-row{display:flex;align-items:center;gap:18px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px}
+.ls-stat{text-align:center;flex-shrink:0}
+.ls-stat-val{font-family:'Space Mono',monospace;font-size:20px;font-weight:700}
+.ls-stat-label{font-size:10px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+.ls-bar-wrap{flex:1;height:8px;background:var(--bg4);border-radius:4px;overflow:hidden}
+.ls-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+.lessons-dom-section{margin-bottom:8px}
+.lessons-dom-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 0 10px;border-bottom:1px solid var(--border);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.lessons-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:24px}
+.lesson-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:all .2s;position:relative}
+.lesson-card:hover{transform:translateY(-2px);background:var(--bg3)}
+.lesson-card.lc-done{border-color:rgba(6,214,160,0.22)!important}
+.lc-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.lc-icon{font-size:20px;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--bg4);flex-shrink:0}
+.lc-meta{flex:1;min-width:0}
+.lc-title{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:2px}
+.lc-dur{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:1px}
+.lc-desc{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:10px}
+.lc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.lc-tag{font-size:10px;padding:2px 7px;border-radius:3px;background:var(--bg4);color:var(--text-dim);font-family:'Space Mono',monospace;white-space:nowrap}
+.lc-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.lc-start-btn{font-size:11px;padding:5px 14px;border-radius:6px;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1px;cursor:pointer;border:1px solid currentColor;background:transparent;transition:all .2s;white-space:nowrap}
+.lc-ring{width:36px;height:36px;position:relative;flex-shrink:0}
+.lc-ring svg{transform:rotate(-90deg)}
+.lc-ring-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:9px;font-weight:700}
+
+/* ── LESSON VIEWER ── */
+#screen-lesson-view{padding:0}
+.lv-wrap{max-width:860px;margin:0 auto;padding:24px 32px 60px;width:100%}
+.lv-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-dim);margin-bottom:14px;font-family:'Space Mono',monospace;flex-wrap:wrap}
+.lv-breadcrumb .lv-bc-link{cursor:pointer;transition:color .15s}
+.lv-breadcrumb .lv-bc-link:hover{color:var(--accent)}
+.lv-header{margin-bottom:20px}
+.lv-dom-badge{font-size:11px;padding:4px 12px;border-radius:4px;border:1px solid currentColor;font-family:'Space Mono',monospace;letter-spacing:1px;display:inline-block;margin-bottom:8px}
+.lv-title{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:8px}
+.lv-meta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.lv-meta-item{font-size:12px;color:var(--text-dim);font-family:'Space Mono',monospace;display:flex;align-items:center;gap:4px}
+.lv-prog-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
+.lv-prog-label{font-size:11px;color:var(--text-dim);font-family:'Space Mono',monospace;flex:1}
+.lv-sec-dots{display:flex;gap:4px;align-items:center}
+.lv-dot{width:8px;height:8px;border-radius:50%;background:var(--bg4);transition:background .3s}
+.lv-dot.dot-done{background:var(--green)}
+
+/* lesson body blocks */
+.lv-content{margin-top:24px}
+.lv-section{margin-bottom:28px}
+.lv-sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.lv-sec-num{font-family:'Space Mono',monospace;font-size:10px;padding:2px 7px;border-radius:3px;background:var(--bg4);color:var(--text-dim);flex-shrink:0;letter-spacing:1px}
+.lv-sec-title{font-family:'Rajdhani',sans-serif;font-size:19px;font-weight:700;color:var(--white);flex:1}
+.lv-mark-btn{font-size:11px;padding:4px 11px;border-radius:5px;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text-dim);font-family:'Space Mono',monospace;transition:all .2s;flex-shrink:0;white-space:nowrap}
+.lv-mark-btn:hover{border-color:var(--green);color:var(--green)}
+.lv-mark-btn.mb-done{border-color:var(--green);color:var(--green);background:rgba(6,214,160,0.07)}
+.lv-body{font-size:14px;line-height:1.82;color:var(--text)}
+.lv-body p{margin-bottom:13px}
+.lv-body strong,.lv-body b{color:var(--white);font-weight:600}
+.lv-body h4{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;margin:16px 0 7px}
+.lv-body ul,.lv-body ol{padding-left:22px;margin-bottom:13px}
+.lv-body li{margin-bottom:5px;line-height:1.75}
+.lv-body code{font-family:'Space Mono',monospace;font-size:12px;padding:1px 6px;background:var(--bg4);border-radius:3px;color:var(--teal)}
+.lv-tip{background:rgba(255,209,102,.06);border:1px solid rgba(255,209,102,.22);border-radius:8px;padding:13px 15px;margin:13px 0}
+.lv-tip-lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.lv-tip-body{font-size:13px;color:var(--text);line-height:1.72}
+.lv-tip-body ul,.lv-tip-body ol{padding-left:18px;margin-top:6px}
+.lv-tip-body li{margin-bottom:4px;line-height:1.65}
+.lv-exam-box{background:rgba(0,212,200,.05);border:1px solid rgba(0,212,200,.2);border-radius:8px;padding:13px 15px;margin:13px 0}
+.lv-exam-lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px}
+.lv-q-preview{padding:10px 13px;background:var(--bg3);border-radius:7px;border-left:3px solid var(--border2);margin-bottom:8px;font-size:13px;line-height:1.6}
+.lv-q-preview strong{color:var(--white)}
+.lv-q-preview em{color:var(--text-dim);font-size:12px}
+
+/* lesson nav footer */
+.lv-nav-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:36px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
+.lv-complete-btn{padding:11px 24px;background:var(--green);color:#000;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;border:none;border-radius:8px;cursor:pointer;transition:all .2s}
+.lv-complete-btn:hover{opacity:.85}
+.lv-complete-btn.btn-done{background:var(--bg4);color:var(--text-dim);cursor:default}
+.lv-nav-btn{padding:9px 16px;background:transparent;border:1px solid var(--border2);color:var(--text-mid);font-family:'DM Sans',sans-serif;font-size:13px;border-radius:7px;cursor:pointer;transition:all .2s;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.lv-nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+.lv-quiz-btn{padding:9px 18px;background:transparent;border:1px solid var(--border2);color:var(--text-mid);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;border-radius:7px;cursor:pointer;transition:all .2s}
+.lv-quiz-btn:hover{border-color:var(--accent);color:var(--accent)}
+
 </style>
 </head>
 <body>
@@ -789,6 +876,44 @@ body::before{
   </div>
 </div>
 
+<!-- ═══════════════════ LESSONS DASHBOARD ═══════════════════ -->
+<div id="screen-lessons" class="screen">
+  <nav class="nav-bar">
+    <span class="nav-logo">📚 Study Modules</span>
+    <span class="nav-cert" id="lessons-cert-name"></span>
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="showMenu()">← Menu</button>
+    </div>
+  </nav>
+  <div style="padding:28px 0 0;max-width:1100px;margin:0 auto;width:100%;padding-left:32px;padding-right:32px">
+    <div class="section-header" style="padding:0;margin-bottom:16px">
+      <div>
+        <div class="section-title">Study Modules</div>
+        <div class="section-sub" id="lessons-sub">Structured lessons mapped directly to exam questions</div>
+      </div>
+    </div>
+    <div class="lessons-stat-row">
+      <div class="ls-stat"><div class="ls-stat-val" id="ls-done">0</div><div class="ls-stat-label">Completed</div></div>
+      <div class="ls-stat"><div class="ls-stat-val" id="ls-total">0</div><div class="ls-stat-label">Modules</div></div>
+      <div class="ls-bar-wrap"><div class="ls-bar-fill" id="ls-bar" style="width:0%"></div></div>
+      <div class="ls-stat"><div class="ls-stat-val" id="ls-pct" style="color:var(--accent)">0%</div><div class="ls-stat-label">Progress</div></div>
+    </div>
+  </div>
+  <div id="lessons-list" style="padding:0 32px 40px;max-width:1100px;margin:0 auto;width:100%"></div>
+</div>
+
+<!-- ═══════════════════ LESSON VIEWER ═══════════════════ -->
+<div id="screen-lesson-view" class="screen">
+  <nav class="nav-bar">
+    <span class="nav-logo" id="lv-nav-title">📚 Lesson</span>
+    <span class="nav-cert" id="lv-nav-cert"></span>
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="showLessons()">← Modules</button>
+    </div>
+  </nav>
+  <div class="lv-wrap" id="lv-main"><!-- populated dynamically --></div>
+</div>
+
 <script>
 // ════════════════════════════════════════════════════════════
 //  SAFETY / INTERACTION BOOTSTRAP
@@ -936,6 +1061,8 @@ function buildMenu(){
   const qTotal=currentPool.length;
   const gTotal=Object.keys(RAW[meta.glossary]).length;
   const items=[
+    {key:'0',icon:'📖',name:'Lessons',desc:'Structured study modules · AI-built from exam questions · tracks progress',
+      badge:'NEW',action:()=>showLessons()},
     {key:'1',icon:'⚡',name:'Quick Quiz',desc:'20 random questions · instant feedback · streaks',
       badge:`${qTotal}Q`,action:()=>startQuiz(shuffle([...currentPool]).slice(0,20),'Quick Quiz','quiz')},
     {key:'2',icon:'🏆',name:'Practice Exam',desc:`${meta.examQ}-question timed simulation · review at end`,
@@ -1943,6 +2070,637 @@ function kevGoPage(p){
 }
 
 
+// ════════════════════════════════════════════════════════════
+//  LESSONS SYSTEM
+
+// ── Topic alias map: lesson topic → real quiz topic ───────
+const TOPIC_MAP = {
+  'ARP Poisoning':'ARP Attacks',
+  'Application Issues':'Application Crashes',
+  'Boot Issues':'Boot Repair',
+  'Common Issues':'Windows Boot Issues',
+  'Common Windows Issues':'Windows Boot Issues',
+  'Common Ports – File Transfer':'Common Ports',
+  'Configuration Issues':'Network Performance',
+  'Data Disposal':'Data Destruction',
+  'DNS Types':'DNS',
+  'DoS/DDoS':'DDoS Defense',
+  'Drive Imaging':'HDD Failure',
+  'External Monitor Troubleshooting':'Monitor Troubleshooting',
+  'Hardware Tools':'Troubleshooting Tools',
+  'IDS/IPS':'Network Security Monitoring',
+  'IPv4 Addressing':'IP Addressing',
+  'IPv4 vs IPv6':'IPv6',
+  'LACP':'VLANs',
+  'Laptop Display Issues':'Laptop RAM',
+  'Laptop Docking Stations':'Mobile Hardware Ports',
+  'Laptop Keyboard Issues':'Laptop RAM',
+  'Laptop Touchpad Issues':'Laptop RAM',
+  'Laser Printer Color':'Laser Printer Process',
+  'Laser Printer Components':'Laser Printer Process',
+  'Layer 1-2 Issues':'Physical Layer Issues',
+  'Layer 3-4 Issues':'Network Performance',
+  'Liquid Cooling Troubleshooting':'Overheating',
+  'Mobile Device Backup':'Mobile OS Features',
+  'Mobile Device Sensors':'Mobile OS Features',
+  'Mobile Email Configuration':'Mobile OS Features',
+  'Mobile VPN Configuration':'VPN Technologies',
+  'Monitor Specifications':'Display Connectors',
+  'Motherboard Form Factors':'Motherboard Components',
+  'NAT/PAT':'NAT',
+  'Network Access Control':'Network Services',
+  'Network Cable Testing':'Cable Troubleshooting',
+  'Network Connectivity Troubleshooting':'Troubleshooting Tools',
+  'OS Troubleshooting':'Windows Boot Issues',
+  'OSI Model Application':'OSI Model',
+  'PCIe Expansion Slots':'Motherboard Components',
+  'Performance Issues':'Slow Windows Performance',
+  'Port Numbers':'Common Ports',
+  'Power Connectors':'PSU and Power',
+  'Printer Driver Issues':'Printer Troubleshooting',
+  'Protocol Analyzers':'Troubleshooting Tools',
+  'Proxy Servers':'Network Services',
+  'Proxy Types':'Network Services',
+  'RAM Troubleshooting':'Laptop RAM',
+  'Routing':'Routing Protocols',
+  'Safety Procedures':'Safety and Environment',
+  'Security Best Practices':'Endpoint Security',
+  'Storage Interfaces':'NVMe Storage',
+  'Subnetting Basics':'Subnetting',
+  'VPN Types':'VPN Technologies',
+  'VLAN Hopping':'VLANs',
+  'VM Network Modes':'Containers vs VMs',
+  'WAN Technologies':'VPN Technologies',
+  'Wireless Antenna Placement':'Wireless Channels',
+  'Wireless Charging':'NFC and Short-Range Wireless',
+  'Wireless Deployment':'Wireless Channels',
+  'Wireless Issues':'Wireless Channels',
+  'Wireless Security Protocols':'Wireless Security',
+  'Wireless Standards':'Wireless Security',
+  'Wireless Troubleshooting':'Wireless Channels',
+  'iOS vs Android Differences':'Mobile OS Features',
+  'Cloud Storage':'Cloud Service Models',
+  'Cloud Networking':'Cloud Concepts',
+  'Command-Line Tools':'Windows Commands',
+  'BIOS/UEFI Settings':'Motherboard Components',
+  'CMOS Reset':'POST Beep Codes',
+  'CPU Specifications':'CPU Sockets',
+  'Cable Management and Labeling':'Cable Troubleshooting',
+  'DHCP Snooping':'DHCP Relay',
+  'Desktop Virtualization (VDI)':'Hypervisor Types',
+  'Dynamic ARP Inspection':'ARP Attacks',
+  'Encapsulation':'OSI Model',
+  'GPU Troubleshooting':'Overheating',
+  'GPS and Location Services':'Mobile OS Features',
+  'Hard Drive Cloning':'HDD Failure',
+  'ACLs':'Network Security',
+  '802.1X':'Wireless Security',
+  'Airplane Mode':'Mobile OS Features',
+  'Antenna Types':'Wireless Channels',
+  'Core Protocols':'OSI Model',
+  'DHCP Snooping':'DHCP Relay',
+  'IPAM':'Network Services',
+  'NTP':'Network Services',
+  'NetFlow':'Network Security Monitoring',
+  'Network Troubleshooting Tools':'Network Security Monitoring',
+  'Performance Issues':'Slow Windows Performance',
+  'Professionalism':'Documentation',
+  'QoS':'Network Performance',
+  'Resource Requirements for VMs':'Hypervisor Types',
+  'SD-WAN':'VPN Technologies',
+  'SDN':'Cloud Concepts',
+  'SMART Diagnostics':'HDD Failure',
+  'SNMP':'Network Security Monitoring',
+  'Sandbox Environment':'Hypervisor Types',
+  'Screen Lock and Biometrics':'Mobile OS Security',
+  'Switching':'VLANs',
+  'TCP/IP Model':'OSI Model',
+  'Thermal Printer':'Printer Types',
+  'Thick vs Thin Provisioning':'Hypervisor Types',
+  'Thunderbolt Ports':'Mobile Hardware Ports',
+  'Touchscreen Calibration':'Mobile OS Features',
+  'Trunking':'VLANs',
+  'USB Standards':'Mobile Hardware Ports',
+  'VDI':'Hypervisor Types'
+};
+
+function resolveTopic(t){ return TOPIC_MAP[t] || t; }
+
+// ════════════════════════════════════════════════════════════
+
+const LESSON_META = {
+  secplus:[
+    {id:'sp-1',dn:1,icon:'🔐',title:'CIA Triad, Security Controls & Zero Trust',dur:'30 min',
+     desc:'The foundational principles behind every Security+ question — master these first',
+     topics:['CIA Triad','Security Controls','Zero Trust','Non-repudiation','Gap Analysis','Deception Technologies','Change Management']},
+    {id:'sp-2',dn:1,icon:'🔑',title:'Cryptography: Encryption, Hashing & PKI',dur:'35 min',
+     desc:'Symmetric vs asymmetric, SHA/MD5 hashing, digital signatures, certificates, and key management',
+     topics:['Encryption','Hashing','PKI / Certificates','Digital Signatures','Key Stretching','Data Protection']},
+    {id:'sp-3',dn:2,icon:'🎭',title:'Social Engineering & Human-Based Attacks',dur:'25 min',
+     desc:'Phishing variants, pretexting, vishing, smishing, baiting, and physical social engineering',
+     topics:['Social Engineering','Physical Security','Insider Threats','Shadow IT','Threat Actors']},
+    {id:'sp-4',dn:2,icon:'🦠',title:'Malware, Network & Web Application Attacks',dur:'35 min',
+     desc:'Complete malware taxonomy, DDoS types, MitM, SQL injection, XSS, SSRF, and CSRF',
+     topics:['Malware Types','Attack Types','Web Application Attacks','Cryptographic Attacks','Wireless Attacks']},
+    {id:'sp-5',dn:2,icon:'🕵️',title:'Advanced Threats, IoCs & Threat Intelligence',dur:'30 min',
+     desc:'APTs, zero-day exploits, supply chain attacks, STIX/TAXII, and threat feeds',
+     topics:['Advanced Persistent Threats','Zero-Day Attacks','Indicators of Compromise','Threat Intelligence','Vulnerability Scanning','Supply Chain Security','Password Attacks']},
+    {id:'sp-6',dn:3,icon:'🏗️',title:'Network Security Architecture & Segmentation',dur:'35 min',
+     desc:'NGFWs, DMZs, VPNs, micro-segmentation, IDS/IPS, and secure network design patterns',
+     topics:['Network Security','Network Segmentation','VPN','Wireless Security','Secure Protocols','Load Balancers & HA','Secure Architecture Design']},
+    {id:'sp-7',dn:3,icon:'☁️',title:'Cloud Security, Virtualization & IAM',dur:'35 min',
+     desc:'Shared responsibility, containers, IaC, IAM models, data protection, and redundancy',
+     topics:['Cloud Security','Virtualization & Containers','Identity & Access Management','Data Protection','Redundancy & Availability','Infrastructure as Code','ICS / OT Security','Containers']},
+    {id:'sp-8',dn:3,icon:'🖥️',title:'Endpoint, Email & Application Security',dur:'25 min',
+     desc:'EDR/XDR, SPF/DKIM/DMARC, S/MIME, hardening techniques, and baseline configurations',
+     topics:['Endpoint Security','Email Security','Secure Baselines','Asset Management']},
+    {id:'sp-9',dn:4,icon:'⚙️',title:'Incident Response & Digital Forensics',dur:'35 min',
+     desc:'NIST IR lifecycle, SANS PICERL, order of volatility, chain of custody, memory forensics',
+     topics:['Incident Response','Digital Forensics','Memory Forensics','Log Analysis']},
+    {id:'sp-10',dn:4,icon:'📊',title:'Security Operations: SIEM, SOAR & Monitoring',dur:'30 min',
+     desc:'Log correlation, SOAR playbooks, threat hunting, vulnerability workflows, and alerting',
+     topics:['SIEM & Log Management','Automation & Orchestration','Network Security Monitoring','Vulnerability Management','Threat Hunting','Alerting & Monitoring']},
+    {id:'sp-11',dn:4,icon:'🎯',title:'Identity Management & Penetration Testing',dur:'30 min',
+     desc:'802.1X, SSO, privilege escalation, pen test phases, lateral movement, red vs blue teams',
+     topics:['Identity Management','Penetration Testing','Secure Coding']},
+    {id:'sp-12',dn:5,icon:'📋',title:'Risk Management & Business Continuity',dur:'30 min',
+     desc:'ALE/ARO/SLE formulas, risk responses, BIA, BCP vs DRP, and recovery site types',
+     topics:['Risk Management','Business Impact Analysis','Business Continuity','Vendor Management']},
+    {id:'sp-13',dn:5,icon:'⚖️',title:'Compliance, Governance & Security Frameworks',dur:'35 min',
+     desc:'GDPR, HIPAA, PCI DSS, NIST CSF, security policies, auditing, and data classification',
+     topics:['Compliance & Regulations','Privacy Regulations','Security Policies','Third-Party Risk','Auditing & Assessments','Frameworks','Data Privacy','Data Classification','Security Awareness','Governance']}
+  ],
+  aplus1:[
+    {id:'a1-1',dn:1,icon:'📱',title:'Mobile Device Hardware & Connectivity',dur:'30 min',
+     desc:'USB-C vs Lightning, IPS vs OLED displays, digitizers, NFC, 5G band types, wireless charging',
+     topics:['Mobile Connectors','Display Technologies','Digitizer vs Display','NFC and Short-Range Wireless','5G Bands','Wireless Charging','Mobile Hardware Ports','Laptop Docking Stations','Mobile Device Sensors']},
+    {id:'a1-2',dn:1,icon:'⚙️',title:'Mobile Device Management, Software & Troubleshooting',dur:'30 min',
+     desc:'MDM policies, mobile OS security, synchronization, email config, VPN, GPS, and troubleshooting',
+     topics:['Laptop RAM','MDM','Mobile OS Features','Mobile OS Security','Device Synchronization','Mobile Device Backup','Mobile Email Configuration','Screen Lock and Biometrics','Airplane Mode','iOS vs Android Differences','Bluetooth Troubleshooting','Laptop Battery','GPS and Location Services','Mobile VPN Configuration','Touchscreen Calibration']},
+    {id:'a1-3',dn:2,icon:'🌐',title:'Networking Fundamentals: Cables, Devices & the OSI Model',dur:'35 min',
+     desc:'Cable categories (Cat 5e–8), fiber, RJ-45, OSI/TCP-IP models, switches, routers, hubs, topologies',
+     topics:['Cable Categories','Fiber Optic Cabling','Network Devices','Network Topologies','OSI Model Application','TCP/IP Model','Network Cable Testing']},
+    {id:'a1-4',dn:2,icon:'🔢',title:'IP Addressing, DHCP, DNS & Core Network Services',dur:'35 min',
+     desc:'IPv4/IPv6 classes, DHCP DORA, DNS resolution, subnetting, NAT/PAT, APIPA, and proxies',
+     topics:['IP Addressing','DHCP','Common Ports','Common Ports – File Transfer','Subnetting Basics','IPv4 vs IPv6','NAT','Network Services','Proxy Servers']},
+    {id:'a1-5',dn:2,icon:'📡',title:'Wireless Networking, VPNs & Network Security',dur:'30 min',
+     desc:'802.11ax/be standards, PoE tiers, WPA3, 802.1X, VPN types, ping/tracert/nslookup tools',
+     topics:['Wi-Fi Standards','PoE Standards','Wireless Security Protocols','Network Access Control','VPN Types','Network Troubleshooting Tools','Wireless Troubleshooting','Wireless Antenna Placement']},
+    {id:'a1-6',dn:3,icon:'💾',title:'CPU, Memory & Motherboards',dur:'35 min',
+     desc:'LGA/PGA/BGA sockets, DDR5 features, SO-DIMM vs DIMM, PCIe lanes, form factors, BIOS/UEFI, USB/Thunderbolt',
+     topics:['CPU Sockets','DDR5 Memory','Laptop RAM','Motherboard Components','PCIe Expansion Slots','Motherboard Form Factors','BIOS/UEFI Settings','USB Standards','Thunderbolt Ports','CPU Specifications','RAM Troubleshooting']},
+    {id:'a1-7',dn:3,icon:'💿',title:'Storage Technologies, RAID Levels & Power Supplies',dur:'30 min',
+     desc:'NVMe Gen 3/4/5 speeds, SATA vs NVMe protocols, RAID 0/1/5/10, PSU sizing, and connectors',
+     topics:['NVMe Storage','Storage Interfaces','Power Connectors','PSU','RAID Levels','Storage','CPU Cooling']},
+    {id:'a1-8',dn:3,icon:'🖨️',title:'Printers, Displays & Peripheral Devices',dur:'30 min',
+     desc:'Laser 7-stage process, inkjet, thermal, 3D printing (FDM/SLA/SLS), display connectors, monitor specs',
+     topics:['Laser Printer Process','3D Printing','Printer Types','Display Connectors','Monitor Specifications','Laser Printer Components','Laser Printer Color','Thermal Printer']},
+    {id:'a1-9',dn:4,icon:'🖥️',title:'Virtualization: Hypervisors, VMs & Containers',dur:'30 min',
+     desc:'Type 1 vs Type 2 hypervisors, VM network modes, snapshots, provisioning types, containers vs VMs',
+     topics:['Hypervisor Types','Containers vs VMs','VM Network Modes','VM Snapshots','Thick vs Thin Provisioning','Resource Requirements for VMs','Desktop Virtualization (VDI)','Sandbox Environment']},
+    {id:'a1-10',dn:4,icon:'☁️',title:'Cloud Computing: Service Models, NIST & Deployment',dur:'25 min',
+     desc:'IaaS/PaaS/SaaS/DaaS, 5 NIST cloud characteristics, public/private/hybrid/community cloud',
+     topics:['Cloud Service Models','NIST Cloud Characteristics','Cloud Deployment Models','Cloud Storage','Cloud Concepts']},
+    {id:'a1-11',dn:5,icon:'🔧',title:'Hardware Troubleshooting Methodology & Components',dur:'30 min',
+     desc:'CompTIA 6-step process, POST/beep codes, RAM/GPU/storage failures, overheating, and CMOS reset',
+     topics:['Troubleshooting Methodology','POST Beep Codes','HDD Failure','No POST','Overheating','GPU Troubleshooting','RAID Troubleshooting','SMART Diagnostics','CMOS Reset','Liquid Cooling Troubleshooting']},
+    {id:'a1-12',dn:5,icon:'🔍',title:'Network, Printer & Display Troubleshooting',dur:'30 min',
+     desc:'APIPA self-assigned IPs, Wi-Fi congestion, printer jams/ghosting/fading, monitor diagnostics',
+     topics:['APIPA / IP Troubleshooting','Wireless Troubleshooting','Printer Troubleshooting','Inkjet Troubleshooting','Monitor Troubleshooting','Network Connectivity Troubleshooting','External Monitor Troubleshooting','Hard Drive Cloning','Drive Imaging','Printer Driver Issues','Cable Management and Labeling','Laptop Keyboard Issues','Laptop Display Issues','Laptop Touchpad Issues']}
+  ],
+  aplus2:[
+    {id:'a2-1',dn:1,icon:'🪟',title:'Windows Editions, Admin Tools & Command Line',dur:'35 min',
+     desc:'Win 11 Home vs Pro, Device Manager, Event Viewer, ipconfig/sfc/DISM, Registry, NTFS, GPT vs MBR',
+     topics:['Windows Editions','Windows Commands','Windows Admin Tools','System File Repair','NTFS Permissions','Windows Registry','GPT vs MBR']},
+    {id:'a2-2',dn:1,icon:'🍎',title:'macOS, Linux & Cross-Platform Essentials',dur:'30 min',
+     desc:'macOS Spotlight/Time Machine/FileVault, Linux chmod/chown, file paths, and shell commands',
+     topics:['macOS Features','Linux Commands']},
+    {id:'a2-3',dn:2,icon:'🛡️',title:'Security Threats, Malware Types & Removal',dur:'35 min',
+     desc:'All A+ Core 2 malware, social engineering, 7-step malware removal process, data destruction',
+     topics:['Malware Removal Steps','Data Destruction','Social Engineering','MFA','Account Lockout Policy']},
+    {id:'a2-4',dn:2,icon:'🔒',title:'Windows Security: Encryption, Permissions & Wi-Fi',dur:'30 min',
+     desc:'BitLocker vs EFS, UAC levels, WPA3-Personal, account management, and mobile device security',
+     topics:['BitLocker vs EFS','Wireless Security','Security Best Practices']},
+    {id:'a2-5',dn:3,icon:'🔧',title:'Software, OS & Application Troubleshooting',dur:'35 min',
+     desc:'Boot failures, Safe Mode, WinRE, application crashes, compatibility issues, and OS repair',
+     topics:['Boot Issues','Application Issues','OS Troubleshooting','Common Windows Issues']},
+    {id:'a2-6',dn:4,icon:'📋',title:'Operational Procedures, Safety & Professionalism',dur:'30 min',
+     desc:'Change management tickets, documentation, data disposal (DoD wipe/shredding), ESD safety, communication',
+     topics:['Change Management','Data Disposal','Documentation','Safety Procedures','Professionalism']}
+  ],
+  netplus:[
+    {id:'np-1',dn:1,icon:'🌐',title:'OSI Model, TCP/IP Stack & Core Protocols',dur:'35 min',
+     desc:'All 7 OSI layers with devices and protocols, TCP/IP vs OSI mapping, encapsulation/decapsulation',
+     topics:['OSI Model','TCP/IP Model','Core Protocols','Port Numbers','Encapsulation']},
+    {id:'np-2',dn:1,icon:'🔢',title:'IP Addressing, Subnetting & IPv6',dur:'40 min',
+     desc:'IPv4 classes, CIDR notation, subnet calculations, RFC 1918 ranges, IPv6 types and address assignment',
+     topics:['IPv4 Addressing','Subnetting','IPv6','DHCP','DNS','NAT/PAT']},
+    {id:'np-3',dn:2,icon:'🔀',title:'Switching, VLANs & Layer 2 Technologies',dur:'30 min',
+     desc:'How switches learn MAC addresses, VLAN configuration, 802.1Q trunking, STP, and LACP',
+     topics:['Switching','VLANs','Spanning Tree','Trunking','LACP']},
+    {id:'np-4',dn:2,icon:'📡',title:'Routing Protocols, WAN Technologies & QoS',dur:'30 min',
+     desc:'Static vs dynamic routing, OSPF/BGP basics, MPLS, SD-WAN, and Quality of Service concepts',
+     topics:['Routing','Routing Protocols','WAN Technologies','SD-WAN','QoS']},
+    {id:'np-5',dn:2,icon:'📶',title:'Wireless Networking: Standards, Security & Deployment',dur:'35 min',
+     desc:'Wi-Fi 6/6E/7, antenna types, channel planning, WPA3-Enterprise with 802.1X, and deployment planning',
+     topics:['Wireless Standards','Wireless Security','Antenna Types','Wireless Deployment']},
+    {id:'np-6',dn:3,icon:'📊',title:'Network Operations: SNMP, Syslog & Monitoring',dur:'30 min',
+     desc:'SNMPv1/v2c/v3, NetFlow/IPFIX, syslog severity levels, NTP stratum, IPAM, and documentation',
+     topics:['SNMP','NetFlow','Syslog','NTP','IPAM','Network Documentation']},
+    {id:'np-7',dn:3,icon:'☁️',title:'SDN, Cloud Networking & Virtual Infrastructure',dur:'25 min',
+     desc:'SDN control/data planes, cloud connectivity models, VDI networking, DNS server roles, and proxies',
+     topics:['SDN','Cloud Networking','VDI','DNS Types','Proxy Types']},
+    {id:'np-8',dn:4,icon:'🔐',title:'Network Security Threats & Defensive Controls',dur:'35 min',
+     desc:'Stateful/NGFW firewalls, ACLs, IDS/IPS, DoS/DDoS attack types, ARP poisoning, VLAN hopping',
+     topics:['Firewall Types','ACLs','IDS/IPS','DoS/DDoS','ARP Poisoning','VLAN Hopping','Wireless Attacks']},
+    {id:'np-9',dn:4,icon:'🛡️',title:'Network Hardening & Secure Protocol Replacement',dur:'30 min',
+     desc:'Port security, DHCP snooping, Dynamic ARP Inspection, 802.1X, replacing Telnet/FTP/HTTP',
+     topics:['Port Security','DHCP Snooping','Dynamic ARP Inspection','802.1X','Secure Protocols']},
+    {id:'np-10',dn:5,icon:'🔧',title:'Troubleshooting Methodology & Diagnostic Tools',dur:'35 min',
+     desc:'OSI layer-by-layer troubleshooting, ping/traceroute/nslookup/netstat commands, cable testers',
+     topics:['Troubleshooting Methodology','Command-Line Tools','Hardware Tools','Protocol Analyzers']},
+    {id:'np-11',dn:5,icon:'🔍',title:'Common Network Problems & Resolution Strategies',dur:'30 min',
+     desc:'Connectivity failures, performance degradation, IP conflicts, switch/router faults, wireless issues',
+     topics:['Layer 1-2 Issues','Layer 3-4 Issues','Wireless Issues','Performance Issues','Configuration Issues']}
+  ]
+};
+
+// ── Progress Persistence ──────────────────────────────────
+function getLessonProg(){try{const s=localStorage.getItem('dcl_lp');return s?JSON.parse(s):{}}catch{return {}}}
+function saveLessonProg(p){try{localStorage.setItem('dcl_lp',JSON.stringify(p))}catch{}}
+function isLessonDone(cert,id){const p=getLessonProg();return !!(p[cert]&&p[cert][id])}
+function setLessonDone(cert,id){const p=getLessonProg();if(!p[cert])p[cert]={};p[cert][id]=Date.now();saveLessonProg(p)}
+function countDone(cert){const p=getLessonProg();const ls=LESSON_META[cert]||[];return ls.filter(l=>p[cert]&&p[cert][l.id]).length}
+function getSecProg(cert,id){try{const s=sessionStorage.getItem('dcl_sp_'+cert+'_'+id);return s?JSON.parse(s):{}}catch{return {}}}
+function setSecDone(cert,id,i){const sp=getSecProg(cert,id);sp[i]=true;try{sessionStorage.setItem('dcl_sp_'+cert+'_'+id,JSON.stringify(sp))}catch{}}
+
+// ── Show Lessons Dashboard ─────────────────────────────────
+function showLessons(){
+  const cm=CERT_META[currentCert];
+  const lessons=LESSON_META[currentCert]||[];
+  const color=cm.color;
+  const done=countDone(currentCert);
+  const total=lessons.length;
+  const pct=total?Math.round(done/total*100):0;
+
+  document.getElementById('lessons-cert-name').textContent=cm.code;
+  document.getElementById('lessons-sub').textContent=total+' modules covering every domain of '+cm.name;
+  document.getElementById('ls-done').textContent=done;
+  document.getElementById('ls-total').textContent=total;
+  document.getElementById('ls-pct').textContent=pct+'%';
+  document.getElementById('ls-pct').style.color=pct===100?'var(--green)':color;
+  const bar=document.getElementById('ls-bar');
+  bar.style.width=pct+'%';
+  bar.style.background='linear-gradient(90deg,'+color+','+color+'99)';
+
+  // Group by domain
+  const domNums=[...new Set(lessons.map(l=>l.dn))].sort((a,b)=>a-b);
+  const pool=RAW[cm.questions]||[];
+  const domOrder=RAW[cm.domOrder]||[];
+  const list=document.getElementById('lessons-list');
+  list.innerHTML='';
+
+  domNums.forEach(dn=>{
+    const domName=domOrder.find(d=>d.includes('Domain '+dn))||'Domain '+dn;
+    const dc=domColor(domName);
+    const domLessons=lessons.filter(l=>l.dn===dn);
+
+    const wrap=document.createElement('div');
+    wrap.className='lessons-dom-section';
+    wrap.innerHTML='<div class="lessons-dom-label" style="color:'+dc+'"><span>◈</span> '+domName+'</div>';
+
+    const grid=document.createElement('div');
+    grid.className='lessons-cards-grid';
+
+    domLessons.forEach(lesson=>{
+      const done=isLessonDone(currentCert,lesson.id);
+      const relQ=(pool.filter(q=>lesson.topics.includes(q.topic))||[]).length;
+      const R=14, C=Math.PI*2*R;
+      const offset=C*(done?0:1);
+      const card=document.createElement('div');
+      card.className='lesson-card'+(done?' lc-done':'');
+      card.style.borderColor=done?'rgba(6,214,160,0.22)':color+'28';
+
+      const tags=lesson.topics.slice(0,4).map(t=>'<span class="lc-tag">'+t+'</span>').join('');
+      const extra=lesson.topics.length>4?'<span class="lc-tag">+'+( lesson.topics.length-4)+'</span>':'';
+
+      card.innerHTML=
+        '<div class="lc-head">'+
+          '<div class="lc-icon" style="background:'+color+'18">'+lesson.icon+'</div>'+
+          '<div class="lc-meta">'+
+            '<div class="lc-title">'+lesson.title+'</div>'+
+            '<div class="lc-dur">⏱ '+lesson.dur+' · 📝 '+relQ+' exam questions</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="lc-desc">'+lesson.desc+'</div>'+
+        '<div class="lc-tags">'+tags+extra+'</div>'+
+        '<div class="lc-footer">'+
+          '<button class="lc-start-btn" style="color:'+(done?'var(--green)':color)+';border-color:'+(done?'rgba(6,214,160,0.4)':color+'44')+'">'+
+            (done?'✓ Review':'▶ Start')+'</button>'+
+          '<div class="lc-ring">'+
+            '<svg width="36" height="36" viewBox="0 0 36 36">'+
+              '<circle cx="18" cy="18" r="'+R+'" fill="none" stroke="var(--bg4)" stroke-width="3"/>'+
+              '<circle cx="18" cy="18" r="'+R+'" fill="none" stroke="'+(done?'#06d6a0':color)+'" stroke-width="3"'+
+                ' stroke-dasharray="'+C.toFixed(2)+'" stroke-dashoffset="'+offset.toFixed(2)+'" stroke-linecap="round"/>'+
+            '</svg>'+
+            '<div class="lc-ring-pct" style="color:'+(done?'var(--green)':color)+'">'+(done?'✓':'0%')+'</div>'+
+          '</div>'+
+        '</div>';
+      card.onclick=()=>openLesson(currentCert,lesson.id);
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    list.appendChild(wrap);
+  });
+
+  showScreen('lessons');
+}
+
+// ── Open & Render a Lesson ─────────────────────────────────
+let _lCert=null, _lId=null;
+
+function openLesson(cert,id){
+  _lCert=cert; _lId=id;
+  const cm=CERT_META[cert];
+  const lesson=(LESSON_META[cert]||[]).find(l=>l.id===id);
+  if(!lesson) return;
+  document.getElementById('lv-nav-title').textContent=lesson.icon+' '+lesson.title;
+  document.getElementById('lv-nav-cert').textContent=cm.code;
+  showScreen('lesson-view');
+  renderLesson(cert,lesson);
+}
+
+function renderLesson(cert,lesson){
+  const cm=CERT_META[cert];
+  const color=cm.color;
+  const domOrder=RAW[cm.domOrder]||[];
+  const domName=domOrder.find(d=>d.includes('Domain '+lesson.dn))||'Domain '+lesson.dn;
+  const pool=RAW[cm.questions]||[];
+  const topicSet=new Set(lesson.topics);
+  const relQ=pool.filter(q=>lesson.topics.some(t=>q.topic===resolveTopic(t)||q.topic===t));
+  const done=isLessonDone(cert,lesson.id);
+  const sections=buildSections(lesson,relQ,cert,color);
+  const sp=getSecProg(cert,lesson.id);
+  const doneCount=Object.keys(sp).length;
+  const total=sections.length;
+
+  const lessons=LESSON_META[cert]||[];
+  const idx=lessons.findIndex(l=>l.id===lesson.id);
+  const prev=idx>0?lessons[idx-1]:null;
+  const next=idx<lessons.length-1?lessons[idx+1]:null;
+
+  let html=
+    '<div class="lv-breadcrumb">'+
+      '<span class="lv-bc-link" onclick="showLessons()">📚 Study Modules</span>'+
+      '<span style="color:var(--bg4)"> › </span>'+
+      '<span style="color:var(--text)">'+lesson.title+'</span>'+
+    '</div>'+
+    '<div class="lv-header">'+
+      '<div class="lv-dom-badge" style="color:'+color+';border-color:'+color+'44">'+domName.split('–')[0].trim()+'</div>'+
+      '<div class="lv-title">'+lesson.title+'</div>'+
+      '<div class="lv-meta-row">'+
+        '<div class="lv-meta-item">⏱ '+lesson.dur+'</div>'+
+        '<div class="lv-meta-item">📄 '+total+' sections</div>'+
+        '<div class="lv-meta-item" style="color:'+color+'">🎯 '+relQ.length+' exam questions</div>'+
+        (done?'<div class="lv-meta-item" style="color:var(--green)">✔ Completed</div>':'')+
+      '</div>'+
+      '<div class="lv-prog-row">'+
+        '<div class="lv-prog-label" id="lv-plabel">Sections read: '+doneCount+' / '+total+'</div>'+
+        '<div class="lv-sec-dots" id="lv-dots">'+
+          Array.from({length:total},(_,i)=>'<div class="lv-dot'+(sp[i]?' dot-done':'')+'" id="lv-d-'+i+'"></div>').join('')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="lv-content">';
+
+  sections.forEach((sec,i)=>{
+    const secDone=!!sp[i];
+    html+=
+      '<div class="lv-section" id="lv-s-'+i+'">'+
+        '<div class="lv-sec-hd">'+
+          '<span class="lv-sec-num">'+String(i+1).padStart(2,'0')+'</span>'+
+          '<div class="lv-sec-title">'+sec.title+'</div>'+
+          '<button class="lv-mark-btn'+(secDone?' mb-done':'')+'" id="lv-mb-'+i+'" onclick="markSec('+i+')">'+
+            (secDone?'✓ Read':'Mark Read')+
+          '</button>'+
+        '</div>'+
+        '<div class="lv-body">'+sec.body+'</div>'+
+      '</div>';
+  });
+
+  html+='</div>';
+
+  // Nav footer
+  html+=
+    '<div class="lv-nav-footer">'+
+      (prev?'<button class="lv-nav-btn" onclick="openLesson(\''+cert+'\',\''+prev.id+'\')" title="'+prev.title+'">← '+prev.title.slice(0,30)+(prev.title.length>30?'…':'')+'</button>':'<div></div>')+
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">'+
+        '<button class="lv-quiz-btn" onclick="drillLesson(\''+cert+'\',\''+lesson.id+'\')">🎯 Quiz These Topics</button>'+
+        '<button class="lv-complete-btn'+(done?' btn-done':'')+'" id="lv-cbtn" onclick="completeLesson(\''+cert+'\',\''+lesson.id+'\')">'+
+          (done?'✔ Completed':'✔ Mark Complete')+
+        '</button>'+
+      '</div>'+
+      (next?'<button class="lv-nav-btn" onclick="openLesson(\''+cert+'\',\''+next.id+'\')" title="'+next.title+'">'+next.title.slice(0,30)+(next.title.length>30?'…':'')+'→</button>':'<div></div>')+
+    '</div>';
+
+  const main=document.getElementById('lv-main');
+  main.innerHTML=html;
+  main.scrollTop=0;
+}
+
+// ── Section Interaction ───────────────────────────────────
+function markSec(i){
+  setSecDone(_lCert,_lId,i);
+  const btn=document.getElementById('lv-mb-'+i);
+  const dot=document.getElementById('lv-d-'+i);
+  if(btn){btn.textContent='✓ Read';btn.classList.add('mb-done')}
+  if(dot)dot.classList.add('dot-done');
+  const sp=getSecProg(_lCert,_lId);
+  const total=document.querySelectorAll('[id^="lv-s-"]').length;
+  const dc=Object.keys(sp).length;
+  const lbl=document.getElementById('lv-plabel');
+  if(lbl)lbl.textContent='Sections read: '+dc+' / '+total;
+  if(dc>=total) completeLesson(_lCert,_lId);
+}
+
+function completeLesson(cert,id){
+  setLessonDone(cert,id);
+  const btn=document.getElementById('lv-cbtn');
+  if(btn){btn.textContent='✔ Completed';btn.classList.add('btn-done')}
+  const meta=document.querySelector('.lv-meta-row');
+  if(meta&&!meta.querySelector('.done-badge')){
+    const b=document.createElement('div');
+    b.className='lv-meta-item done-badge';b.style.color='var(--green)';b.textContent='✔ Completed';
+    meta.appendChild(b);
+  }
+}
+
+function drillLesson(cert,id){
+  const lesson=(LESSON_META[cert]||[]).find(l=>l.id===id);
+  if(!lesson) return;
+  const pool=RAW[CERT_META[cert].questions]||[];
+  const topicSet=new Set(lesson.topics);
+  const q=shuffle(pool.filter(q=>topicSet.has(q.topic)));
+  if(!q.length){showToast('No quiz questions found for these topics yet.');return}
+  startQuiz(q.slice(0,20),'Lesson Quiz — '+lesson.title,'quiz');
+}
+
+// ── Build Section Content from Quiz Data ──────────────────
+function buildSections(lesson,relQ,cert,color){
+  const sections=[];
+  const cm=CERT_META[cert];
+  const allPool=RAW[cm.questions]||[];
+
+  // ── Section 1: Overview & Learning Objectives ─────────
+  // Re-resolve relQ using topic map for full coverage
+  const resolvedRelQ=allPool.filter(q=>lesson.topics.some(t=>q.topic===resolveTopic(t)||q.topic===t));
+  const allRelQForBuild=resolvedRelQ.length>0?resolvedRelQ:relQ;
+  const byDiff={easy:allRelQForBuild.filter(q=>q.difficulty==='easy').length,
+    medium:relQ.filter(q=>q.difficulty==='medium').length,
+    hard:relQ.filter(q=>q.difficulty==='hard').length};
+  const byTopic={};
+  allRelQForBuild.forEach(q=>{if(!byTopic[q.topic])byTopic[q.topic]=[];byTopic[q.topic].push(q)});
+
+  let overview=
+    '<p>This module prepares you for <strong>'+allRelQForBuild.length+' '+cm.code+' exam questions</strong> spanning '+lesson.topics.length+' topic areas. '+
+    'These concepts appear frequently in scenario-based questions — understanding <em>why</em> an answer is correct matters more than memorising it.</p>'+
+    '<div style="display:flex;gap:12px;margin:12px 0;flex-wrap:wrap">'+
+      '<div style="padding:8px 14px;background:var(--bg3);border-radius:6px;border-left:3px solid var(--green)"><span style="font-family:\'Space Mono\',monospace;font-size:11px;color:var(--green)">'+byDiff.easy+' EASY</span></div>'+
+      '<div style="padding:8px 14px;background:var(--bg3);border-radius:6px;border-left:3px solid var(--gold)"><span style="font-family:\'Space Mono\',monospace;font-size:11px;color:var(--gold)">'+byDiff.medium+' MEDIUM</span></div>'+
+      '<div style="padding:8px 14px;background:var(--bg3);border-radius:6px;border-left:3px solid #ef4444"><span style="font-family:\'Space Mono\',monospace;font-size:11px;color:#ef4444">'+byDiff.hard+' HARD</span></div>'+
+    '</div>'+
+    '<h4>Topics you will master</h4><ul>'+
+    lesson.topics.map(t=>{
+      const tq=byTopic[t]||[];
+      return '<li><strong>'+t+'</strong>'+(tq.length?' — '+tq.length+' question'+(tq.length>1?'s':''):'')+'</li>';
+    }).join('')+
+    '</ul>'+
+    '<p>Work section by section. Click <strong>Mark Read</strong> after each one, then hit <strong>Quiz These Topics</strong> to immediately test your recall. Active retrieval practice is the most effective way to prepare for this exam.</p>';
+  sections.push({title:'Overview & Learning Objectives',body:overview});
+
+  // ── Sections 2–N: Content grouped by topic clusters ───
+  const clusters=[];
+  const topicsCopy=[...lesson.topics];
+  while(topicsCopy.length>0) clusters.push(topicsCopy.splice(0,Math.min(3,topicsCopy.length)));
+
+  clusters.forEach((cluster,ci)=>{
+    const clusterQ=cluster.flatMap(t=>byTopic[resolveTopic(t)]||byTopic[t]||[]);
+    let body='';
+
+    cluster.forEach(topic=>{
+      const tqs=byTopic[resolveTopic(topic)]||byTopic[topic]||[];
+      if(!tqs.length){
+        // Pull from full pool by topic name match
+        const fallback=allPool.filter(q=>q.topic===resolveTopic(topic)||q.topic===topic);
+        if(fallback.length) tqs.push(...fallback.slice(0,3));
+      }
+      if(!tqs.length) return;
+
+      body+='<h4 style="color:'+color+'">'+topic+'</h4>';
+
+      // Aggregate and de-duplicate explanation content across questions on this topic
+      const seenContent=new Set();
+      tqs.forEach(q=>{
+        const expl=q.explanation||'';
+        const key=expl.slice(0,60);
+        if(seenContent.has(key)) return;
+        seenContent.add(key);
+        // Break explanation into paragraphs at em-dash boundaries and long sentences
+        const parts=expl.split(/(?<=\.)\s+(?=[A-Z])/);
+        let chunk='',rendered=[];
+        parts.forEach(p=>{chunk+=p+' ';if(chunk.length>220){rendered.push(chunk.trim());chunk=''}});
+        if(chunk.trim()) rendered.push(chunk.trim());
+        rendered.forEach(r=>{
+          // Bold any uppercase acronyms (2-5 chars) for scanning ease
+          const formatted=r.replace(/\b([A-Z]{2,5})\b/g,'<strong>$1</strong>');
+          body+='<p>'+formatted+'</p>';
+        });
+      });
+
+      // Add one concrete exam-pattern example per topic (if 2+ questions exist)
+      if(tqs.length>=2){
+        const eg=tqs[0];
+        body+=
+          '<div class="lv-exam-box">'+
+            '<div class="lv-exam-lbl">📝 Exam Pattern Example</div>'+
+            '<div class="lv-q-preview">'+
+              '<strong>Q: </strong>'+eg.question+'<br><br>'+
+              '<strong>✔ '+eg.answer+': </strong>'+eg.choices[eg.answer]+'<br>'+
+              '<em>Why: '+eg.explanation.split('.')[0]+'.</em>'+
+            '</div>'+
+          '</div>';
+      }
+    });
+
+    if(body){
+      const clusterTitle=cluster.slice(0,2).join(' & ')+(cluster.length>2?' & More':'');
+      sections.push({title:clusterTitle,body});
+    }
+  });
+
+  // ── Final Section: Exam Strategy & Key-Term Quick Reference ──
+  if(relQ.length>=2){
+    const hardQ=allRelQForBuild.filter(q=>q.difficulty==='hard');
+    const allTopicGroups=Object.entries(byTopic).filter(([,v])=>v.length>0).slice(0,10);
+    let strat=
+      '<p>These are the most high-value patterns for answering '+cm.code+' questions on this topic correctly:</p>'+
+      '<ul>'+
+      allTopicGroups.map(([t,qs])=>{
+        const tip=qs[0].explanation.split('.')[0];
+        return '<li><strong>'+t+':</strong> '+tip+'.</li>';
+      }).join('')+
+      '</ul>';
+
+    if(hardQ.length){
+      strat+='<div class="lv-tip"><div class="lv-tip-lbl">⚠ Hard Question Patterns</div><div class="lv-tip-body"><ul>'+
+        hardQ.slice(0,5).map(q=>{
+          const wrongChoices=Object.entries(q.choices).filter(([k])=>k!==q.answer);
+          const topDistractor=wrongChoices[0];
+          return '<li><strong>'+q.topic+':</strong> '+q.question.slice(0,90)+(q.question.length>90?'…':'')+'<br>'+
+            '<span style="color:var(--green)">✔ Correct: '+q.choices[q.answer]+'</span>'+
+            (topDistractor?'<br><span style="color:#ef4444">✗ Common trap: '+topDistractor[1]+'</span>':'')+
+            '</li>';
+        }).join('')+
+        '</ul></div></div>';
+    }
+
+    // Key terms summary table
+    const terms=[];
+    relQ.forEach(q=>{
+      const t=q.topic;
+      if(!terms.find(x=>x.t===t)){
+        const def=q.explanation.split('.')[0];
+        terms.push({t,def});
+      }
+    });
+    if(terms.length>2){
+      strat+=
+        '<h4>Quick-Reference: Key Concepts</h4>'+
+        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">'+
+        terms.slice(0,12).map(x=>
+          '<div style="padding:8px 12px;background:var(--bg3);border-radius:6px;border-top:2px solid '+color+'33">'+
+            '<div style="font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px">'+x.t+'</div>'+
+            '<div style="font-size:11px;color:var(--text-dim);line-height:1.5">'+x.def.slice(0,90)+(x.def.length>90?'…':'')+'</div>'+
+          '</div>'
+        ).join('')+
+        '</div>';
+    }
+
+    sections.push({title:'Exam Strategy & Quick Reference',body:strat});
+  }
+
+  return sections;
+}
+
+// ── Helper: toast notification ────────────────────────────
+function showToast(msg){
+  let t=document.getElementById('lesson-toast');
+  if(!t){t=document.createElement('div');t.id='lesson-toast';
+    t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:10px 20px;border-radius:8px;font-size:13px;z-index:9999;opacity:0;transition:opacity .3s';
+    document.body.appendChild(t)}
+  t.textContent=msg;t.style.opacity='1';
+  setTimeout(()=>t.style.opacity='0',2500);
+}
 
 
 </script>
