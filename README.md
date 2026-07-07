@@ -1,6 +1,6 @@
 # 🛡️ Derian's Cyber Class
 
-> A fully self-contained CompTIA certification study platform — 469 practice questions across three certifications, built into a single HTML file with zero dependencies.
+> A fully self-contained CompTIA certification study platform — 469 practice questions across three certifications, built into a single HTML file with zero dependencies. Originally started as a terminal-based Python study tool.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://derianfarley.github.io/derians-cyber-class/)
 [![Questions](https://img.shields.io/badge/Questions-469-brightgreen?style=for-the-badge)](https://derianfarley.github.io/derians-cyber-class/)
@@ -14,6 +14,26 @@
 **Derian's Cyber Class** is a free, open-source CompTIA certification study tool built entirely in a single HTML file. There is no server, no database, no login, no tracking, and nothing to install. Open it in a browser and start studying immediately — it works just as well saved to your desktop as it does on a live website.
 
 The platform covers three CompTIA certification tracks with hundreds of original practice questions, each accompanied by detailed, exam-focused explanations written to teach the underlying concept rather than just reveal the answer. Every question maps to a specific exam domain so you always know what you're studying.
+
+---
+
+## 🕰️ Project Origins: From Terminal to Browser
+
+This project didn't start as a web app. The very first version of Derian's Cyber Class was a **terminal-based Python CLI** — a single `.py` script with no external dependencies beyond the Python standard library. It ran directly in a terminal window and used raw ANSI escape codes to build a colorful, boxed, animated study experience: gradient splash screens, progress bars, domain-themed color coding, streak badges, and a full quiz/exam/flashcard/glossary engine — all rendered with nothing but `print()` statements and terminal color codes.
+
+That original CLI is preserved in this repository under [`/legacy-cli/`](./legacy-cli) as a historical artifact. It's **frozen and no longer actively developed** — all new features, content, and fixes go into the HTML version. The two versions have diverged significantly since the rebuild; the CLI does not have the lessons system, live threat intel (CISA KEV feed), CVE lookups, or the expanded question bank that the web app has today.
+
+If you're curious how this project evolved, or you just prefer studying in a terminal over a browser, it's worth a look. If you want the actively maintained, fully-featured experience, use the HTML app.
+
+### CLI Version Highlights (for the curious)
+- Pure Python 3 standard library — no `pip install` required, runs anywhere Python runs
+- Hand-built ANSI color and box-drawing system (`class C`, `box()`, `panel()`, `gradient_bar()`)
+- Full quiz engine: quick quiz, domain drill, difficulty drill, weighted practice exam, weak-spot drill, flashcards, glossary with its own quiz mode
+- Animated splash screens and loading bars using raw terminal escape sequences
+- Same underlying question philosophy as the web app: every question ships with a full teaching explanation, not just an answer key
+
+### Why It Was Rebuilt as a Web App
+The terminal format hit a ceiling pretty quickly — no way to browse from a phone, no way to share a link, no visual richness beyond what ANSI codes allow, and no way to integrate live data sources like CVE lookups or threat feeds. Rebuilding it as a self-contained HTML file kept the "zero dependencies, works anywhere" spirit of the original while opening the door to a browser UI, mobile access, and live external data.
 
 ---
 
@@ -92,6 +112,7 @@ The Security+ exam covers the core security skills needed for entry-level cybers
 - **Zero dependencies** — no npm, no build step, no server required
 - **Mobile-friendly** — responsive design works on phones and tablets
 - **Interactive lessons system** — structured learning modules with progress tracking, guided instruction, and exam-focused content
+- **Legacy terminal CLI preserved** — the original Python prototype this project grew from, kept for the curious ([see `/legacy-cli/`](./legacy-cli))
 
 ---
 
@@ -121,6 +142,14 @@ xdg-open index.html
 ```
 That's it. No installation, no server, no configuration.
 
+### Option 3: Run the Original Terminal CLI
+If you'd rather study from a terminal, the original Python prototype still runs:
+```bash
+cd legacy-cli
+python3 derians_cyber_class.py
+```
+Requires only Python 3 — no external packages. Keep in mind this version is frozen and does not include the lessons system, live threat intel, or the expanded/updated question bank found in the HTML app.
+
 ---
 
 ## 🗂️ Repository Structure
@@ -128,18 +157,21 @@ That's it. No installation, no server, no configuration.
 ```
 derians-cyber-class/
 │
-├── index.html          # The entire application — all HTML, CSS, JS, and question data
-├── README.md           # This file
-├── LICENSE             # MIT License
-├── CONTRIBUTING.md     # Guide for contributing questions or improvements
-└── .gitignore          # Standard GitHub Pages gitignore
+├── index.html              # The entire web application — all HTML, CSS, JS, and question data
+├── README.md                # This file
+├── LICENSE                  # MIT License
+├── CONTRIBUTING.md          # Guide for contributing questions or improvements
+├── .gitignore                # Standard GitHub Pages gitignore
+│
+└── legacy-cli/               # Original terminal-based Python prototype (frozen, not actively developed)
+    └── derians_cyber_class.py
 ```
 
-The entire platform lives inside `index.html`. There are no external files, no assets folder, no JavaScript modules, and no stylesheets to manage. This is intentional — it means the file can be sent to anyone, opened anywhere, and works immediately without any setup.
+The active, maintained application lives entirely inside `index.html` — no external files, no assets folder, no JavaScript modules, no stylesheets to manage. This is intentional: it means the file can be sent to anyone, opened anywhere, and works immediately without any setup.
+
+The `/legacy-cli/` folder is a time capsule — it's not built on, not synced with the web app, and exists purely as a record of where this project started.
 
 ---
-
-
 
 ## 🎓 Interactive Lessons System
 
@@ -158,17 +190,20 @@ A major addition to the platform is the **Lessons Feature**, which transforms th
 ### Why It Matters
 Instead of immediately jumping into practice questions, learners can now build foundational understanding through guided lessons and then validate their knowledge using the existing quiz engine. This creates a more complete study experience that supports both learning and assessment.
 
-
 ---
 
 ## 🛠️ Technical Details
 
-### Stack
+### Stack (Web App)
 - **HTML5** — semantic structure and layout
 - **CSS3** — custom properties, grid, flexbox, keyframe animations, responsive design
 - **Vanilla JavaScript (ES6+)** — all quiz logic, scoring, routing, and DOM manipulation
 
-### Architecture
+### Stack (Legacy CLI)
+- **Python 3** — standard library only (`random`, `time`, `sys`, `os`, `re`, `collections`)
+- **Raw ANSI escape codes** — a hand-built color/box-drawing system (`class C`, `box()`, `panel()`, `gradient_bar()`) instead of any terminal UI library
+
+### Architecture (Web App)
 The application is structured as a single-page app (SPA) without any framework. Key design decisions:
 
 - **All question data is embedded** as a `const RAW` JavaScript object in the HTML file. This means the data loads instantly with no fetch requests and the app works completely offline.
@@ -213,6 +248,8 @@ Each question follows this schema:
 | Security+ | SY0-701 | 125 | 162 | 5 |
 | **Total** | | **469** | **503** | |
 
+*Note: the legacy Python CLI reflects an earlier, smaller snapshot of this question bank and is not updated when the web app's content is expanded.*
+
 ---
 
 ## 🤝 Contributing
@@ -224,6 +261,7 @@ The short version:
 - Every question needs all four answer choices and a thorough explanation
 - No duplicate questions (check existing content first)
 - Follow the existing JSON schema exactly
+- All active development targets `index.html` — the `/legacy-cli/` folder is frozen and not accepting content updates
 
 ---
 
@@ -233,12 +271,13 @@ Planned improvements:
 
 - [ ] Add CompTIA Linux+ questions
 - [ ] Add CompTIA CySA+ questions
-- [ ] Spaced repetition mode — questions you get wrong appear more frequently
-- [ ] Timed exam simulation mode with countdown timer
-- [ ] Domain-specific practice mode — drill one domain at a time
-- [ ] Performance analytics — track improvement over multiple sessions using localStorage
+- [ ] Real countdown timer for Practice Exam mode (currently shows a "TIMED" badge but has no functioning clock)
+- [ ] Persist session quiz performance (scores, wrong answers) across sessions instead of resetting on refresh
+- [ ] Cross-session missed-question bank so Weak Spot Drill pulls from all-time misses, not just the current session
+- [ ] Accessibility pass — aria-labels, roles, and alt text throughout the UI
 - [ ] Dark/light theme toggle
-- [ ] Keyboard navigation for quiz answers
+
+**Already shipped** (previously listed here as planned, now live): Domain Drill mode, keyboard shortcuts for quiz answers (A/B/C/D, H for hint, Enter to advance).
 
 ---
 
@@ -260,8 +299,8 @@ You are free to use, copy, modify, and distribute this project for any purpose, 
 
 ## 🙏 Acknowledgments
 
-Built by **Derian** as a personal study companion for CompTIA certifications. If this tool helps you pass your exam, consider starring the repository or sharing it with others studying for the same certifications.
+Built by **Derian** as a personal study companion for CompTIA certifications, starting life as a terminal Python script before growing into a full web platform. If this tool helps you pass your exam, consider starring the repository or sharing it with others studying for the same certifications.
 
 ---
 
-*Last updated: June 2026 · 469 questions · 3 certification paths*
+*Last updated: July 2026 · 469 questions · 3 certification paths · 1 legacy CLI prototype*
